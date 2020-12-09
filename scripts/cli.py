@@ -2,8 +2,7 @@ import os
 import sys
 
 from shotgun_api3 import Shotgun
- 
- 
+
 def main():
     target_dir = "images"
  
