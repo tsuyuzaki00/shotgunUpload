@@ -19,7 +19,6 @@ def main():
  
     # 対象のエンティティをバージョン、ファイルへリンクするフィールドをsg_uploaded_movieとします
     entity_type = "Version"
-    field_code = "sg_uploaded_movie"
     for _file in os.listdir(target_dir):
  
         # ファイル名と同じ名前のバージョン名と、所属するプロジェクトの情報を持たせます
@@ -30,20 +29,6 @@ def main():
  
         # versionにはどのようなデータが入っているでしょうか？
         print(version)
- 
-        # 作成したバージョンのidを取得します
-        version_id = version["id"]
-        file_path = os.path.join(target_dir, _file)
- 
-        # ファイルをアップロードし、バージョンにファイルリンクを作成します
-        shotgun.upload(
-            entity_type,
-            version_id,
-            file_path,
-            field_name=field_code,
-            display_name=_file
-        )
- 
     return 0
  
  
