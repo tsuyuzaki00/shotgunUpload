@@ -11,26 +11,33 @@ def main():
     api_key = "hwdoZvfavf0(lzzdetntdsmal"
  
     # Shotgunインスタンスの取得
-    shotgun = Shotgun(url, script_name=script_name, api_key=api_key)
+    sg = Shotgun(url, script_name=script_name, api_key=api_key)
  
     # 対象プロジェクト
     project_id = 122
-    project = {"type": "Project", "id": project_id}
- 
+    project = sg.find_one('Project', [['name', 'is', "testProject"]])
+    field = sg.schema_field_read('Asset').keys()
+    #print(project)
+    #print(field)
+
+    result = sg.find("Version", [], ['project'])
+    #print(result)
+
+    sg.close()
+
     # 対象のエンティティをバージョン、ファイルへリンクするフィールドをsg_uploaded_movieとします
-    entity_type = "Version"
-    for _file in os.listdir(target_dir):
+    file = os.listdir(target_dir)
  
-        # ファイル名と同じ名前のバージョン名と、所属するプロジェクトの情報を持たせます
-        entity_data = {"code": _file, "project": project}
+    # バージョンエンティティを作成します
+    # code = アセット名
+    # project = どのプロジェクトの中に作るか {type : Project, id : num }指示
+    version = sg.create("Asset", {"code": "hogehoge",
+    "project": { "type": "Project", "name": "testProject" , "id": project_id },
+    })
  
-        # バージョンエンティティを作成します
-        version = shotgun.create(entity_type, entity_data)
- 
-        # versionにはどのようなデータが入っているでしょうか？
-        print(version)
+    # versionにはどのようなデータが入っているでしょうか？
+    #print (version)
     return 0
- 
- 
+
 if __name__ == "__main__":
     sys.exit(main())
