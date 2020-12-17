@@ -31,8 +31,10 @@ def main():
     # バージョンエンティティを作成します
     # code = アセット名
     # project = どのプロジェクトの中に作るか {type : Project, id : num }指示
-    version = sg.create("Asset", {"code": "hogehoge",
+    version = sg.create("Version", {"code": "hogehoge",
     "project": { "type": "Project", "name": "testProject" , "id": project_id },
+    "description" : "testtest"
+    #"sg_sequence":{"id": 1454, "name": "hogehoge", "type": "Asset"}
     })
  
     # versionにはどのようなデータが入っているでしょうか？
