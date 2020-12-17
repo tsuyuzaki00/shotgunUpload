@@ -41,11 +41,12 @@ def main():
         "sg_task": {"type": "Task", 'id': 5833 },
         "user": {"type": "HumanUser", 'id': 88},
     })
+    sg.upload("Version", version["id"], os.path.join(target_dir, file[0]), field_name = "sg_uploaded_movie", display_name = file[0])
 
-    sg.activity_stream_read("Version", 6996)
+    sg.activity_stream_read("Version", version["id"])
 
     # versionにはどのようなデータが入っているでしょうか？
-    #print (version)
+    #print (version["id"])
     return 0
 
 if __name__ == "__main__":
