@@ -42,6 +42,8 @@ def main():
         "user": {"type": "HumanUser", 'id': 88},
     })
 
+    sg.activity_stream_read("Version", 6996)
+
     # versionにはどのようなデータが入っているでしょうか？
     #print (version)
     return 0
