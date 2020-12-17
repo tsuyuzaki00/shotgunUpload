@@ -16,7 +16,7 @@ def main():
     # 対象プロジェクト
     project_id = 122
     project = sg.find_one('Project', [['name', 'is', "testProject"]])
-    field = sg.schema_field_read('Asset').keys()
+    field = sg.schema_field_read('Version').keys()
     #print(project)
     #print(field)
 
@@ -31,12 +31,17 @@ def main():
     # バージョンエンティティを作成します
     # code = アセット名
     # project = どのプロジェクトの中に作るか {type : Project, id : num }指示
-    version = sg.create("Version", {"code": "hogehoge",
-    "project": { "type": "Project", "name": "testProject" , "id": project_id },
-    "description" : "testtest"
-    #"sg_sequence":{"id": 1454, "name": "hogehoge", "type": "Asset"}
+    version = sg.create("Version", {
+        "code": "test4",
+        "description" : "testtest",
+        "sg_path_to_frames": file[0],
+        "sg_status_list": "rev",
+        "project": { "type": "Project", "name": "testProject" , "id": project_id },
+        "entity": {"type": "Asset", "id": 1413 },
+        "sg_task": {"type": "Task", 'id': 5833 },
+        "user": {"type": "HumanUser", 'id': 88},
     })
- 
+
     # versionにはどのようなデータが入っているでしょうか？
     #print (version)
     return 0
