@@ -1,0 +1,17 @@
+{
+    "config": {
+        "target_dir": "images",
+        "url": "https://engiscriptstest.shotgunstudio.com/",
+        "script_name": "myuploader",
+        "api_key": "hwdoZvfavf0(lzzdetntdsmal",
+        "project_id": 122,
+        "link_asset": 1413,
+        "link_task": 5833,
+        "user": 88
+    },
+    "create": {
+        "code": "title1",
+        "description": "description",
+        "sg_status_list": "rev"
+    }
+}

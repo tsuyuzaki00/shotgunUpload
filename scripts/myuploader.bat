@@ -6,7 +6,7 @@ SET ACTIVATE_VENV=%USERPROFILE%\.virtualenvs\venv_shotgun_scripting\Scripts\acti
 SET DEACTIVATE_VENV=%USERPROFILE%\.virtualenvs\venv_shotgun_scripting\Scripts\deactivate.bat
  
 CALL %ACTIVATE_VENV%
-python %THISDIR%\cli.py
+python %THISDIR%\addVersion.py
 CALL %DEACTIVATE_VENV%
  
 PAUSE
