@@ -56,7 +56,7 @@ def main():
     verFiled = sg.schema_field_read("Version")
     fields = list(verFiled.keys())
     filters = [["project", "is", {"type": "Project", "id": project_id}]]
-    test = sg.find("Version", filters, fields = fields)
+    #test = sg.find("Asset", filters, fields = ['sg_versions'])
 
     version = sg.create("Version", {
         "project": { "type": "Project", "name": "testProject" , "id": project_id },
@@ -68,10 +68,12 @@ def main():
         "sg_status_list": status,
         "sg_path_to_frames": file[0],
     })
-    sg.upload("Version", version["id"], os.path.join(target_dir, file[0]), field_name = "sg_uploaded_movie", display_name = file[0])
-
     
-    sg.activity_stream_read("Version", version["id"], entity_fields={"Shot": ["sg_sequence"], "Asset": ["sg_asset_type"]})
+    sg.upload("Version", version["id"], os.path.join(target_dir, file[0]), field_name = "sg_uploaded_movie", display_name = file[0])
+    #sg.update("Version", version["id"], {"sg_status_list": status, "published_files": }, multi_entity_update_modes={"assets": "add"})
+
+    test = sg.activity_stream_read("Version", version["id"])
+    print(test)
     return 0
 
 if __name__ == "__main__":
