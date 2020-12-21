@@ -50,8 +50,8 @@ def main():
 
     sg = Shotgun(url, script_name=script_name, api_key=api_key)
 
-    os.path.join(base_dir(), target_dir)
-    file = os.listdir(target_dir)
+    file = os.path.join(base_dir(), target_dir)
+    #file = os.listdir(target_dir)
 
     verFiled = sg.schema_field_read("Version")
     fields = list(verFiled.keys())
@@ -70,7 +70,7 @@ def main():
     })
     
     sg.upload("Version", version["id"], os.path.join(target_dir, file[0]), field_name = "sg_uploaded_movie", display_name = file[0])
-    #sg.update("Version", version["id"], {"sg_status_list": status, "published_files": }, multi_entity_update_modes={"assets": "add"})
+    sg.update("Version", version["id"], {"sg_status_list": status}, multi_entity_update_modes={"assets": "add"})
 
     test = sg.activity_stream_read("Version", version["id"])
     print(test)
