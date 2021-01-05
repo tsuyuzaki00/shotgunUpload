@@ -5,13 +5,13 @@
         "script_name": "myuploader",
         "api_key": "hwdoZvfavf0(lzzdetntdsmal",
         "project_id": 122,
-        "link_asset": 1413,
-        "link_task": 5833,
         "user": 88
     },
-    "create": {
+    "assetVersion00": {
         "code": "title1",
         "description": "description",
-        "sg_status_list": "rev"
+        "sg_status_list": "rev",
+        "link_asset": 1413,
+        "link_task": 5833
     }
 }
