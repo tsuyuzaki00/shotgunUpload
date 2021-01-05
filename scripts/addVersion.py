@@ -50,16 +50,13 @@ def main():
 
     sg = Shotgun(url, script_name=script_name, api_key=api_key)
 
-    file = os.path.join(base_dir(), target_dir)
-    #file = os.listdir(target_dir)
-
-    verFiled = sg.schema_field_read("Version")
-    fields = list(verFiled.keys())
-    filters = [["project", "is", {"type": "Project", "id": project_id}]]
-    #test = sg.find("Asset", filters, fields = ['sg_versions'])
+    target_list = os.listdir(target_dir)
+    for file in target_list:
+        if ".png" in file:
+            images.append(file)
 
     version = sg.create("Version", {
-        "project": { "type": "Project", "name": "testProject" , "id": project_id },
+        "project": { "type": "Project", "name": "testProject" , "id": project_id , "include_archived_projects": False},
         "entity": {"type": "Asset", "id": link_asset_id },
         "sg_task": {"type": "Task", 'id': link_task_id },
         "user": {"type": "HumanUser", 'id': user_id},
